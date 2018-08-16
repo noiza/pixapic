@@ -64,6 +64,7 @@
 		</tr>
 	</tbody>
 </table>
+<button id="check-errors">Check errors</button>
 <script>
 	var answers = [[1, 1, 0, 1, 1],
 				   [1, 1, 1, 1, 1],
@@ -80,6 +81,7 @@
 	var rIndex, cIndex;
 
 	var table = document.getElementById('table');
+	var checkErrorsButton = document.getElementById('check-errors');
 
 	paintGameField();
 
@@ -136,8 +138,13 @@
 				cellIndex = this.cellIndex - 2;
 				console.log(rowIndex + ', '+ cellIndex);
 
-				//записать в массив выбранный элемент = 1 (Yes)
-				userAnswers[rowIndex][cellIndex] = 1;
+				// записать в массив выбранный элемент = 1 (Yes)
+				// или 2, если 1 уже есть
+				if (userAnswers[rowIndex][cellIndex] === 1 ) {
+					userAnswers[rowIndex][cellIndex] = 2;
+				} else {
+					userAnswers[rowIndex][cellIndex] = 1;
+				}
 				addBlack(this);
 			}
 		}
@@ -147,6 +154,18 @@
 
 	//проверка на ошибки 
 	//сравнить два массива, если елементы одинаковые или равны 2 (не заполнены), то правильно и показать сообщение
+	
+	checkErrorsButton.onclick = function () {
+		for (var i = 0; i < answers.length; i++) {
+			for (var j = 0; j <= answers.length; j++) {
+				if ( !(userAnswers[i][j] === answers [i][j] || userAnswers[i][j] === 2) ) {
+					alert('errors!');
+					return;
+				}
+			}
+		}
+	}
+	
 
 
 
