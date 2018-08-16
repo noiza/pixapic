@@ -85,27 +85,6 @@
 
 	paintGameField();
 
-	/*table.onclick = function (event) {
-		var target = event.target;
-
-		//возможно, клик был внутри table, но вне элементов td
-		if (target.tagName != 'TD') return;
-
-        addBlack(target);
-
-	}*/
-
-    /*table.oncontextmenu = function (event) {
-        var target = event.target;
-
-        //возможно, клик был внутри table, но вне элементов td
-        if (target.tagName != 'TD') return;
-
-        addWhite(target);
-        return false;
-
-    }*/
-
     function addBlack(td) {
         if (td.classList.contains('white')) {
             td.classList.remove('white');
@@ -130,7 +109,7 @@
 		}
 	}
 
-	//onclick
+	//onclick 'Yes' or 1
 	for (var i = 1; i < table.rows.length; i++) {
 		for (var j = 2; j <= table.rows.length; j++) {
 			table.rows[i].cells[j].onclick = function() {
@@ -150,7 +129,24 @@
 		}
 	}
 
-	//oncontextmenu 
+	//oncontextmenu 'No' or 0
+	for (var i = 1; i < table.rows.length; i++) {
+		for (var j = 2; j <= table.rows.length; j++) {
+			table.rows[i].cells[j].oncontextmenu = function() {
+				rowIndex = this.parentElement.rowIndex - 1;
+				cellIndex = this.cellIndex - 2;
+				console.log(rowIndex + ', '+ cellIndex);
+
+				if (userAnswers[rowIndex][cellIndex] === 0 ) {
+					userAnswers[rowIndex][cellIndex] = 2;
+				} else {
+					userAnswers[rowIndex][cellIndex] = 0;
+				}
+				addWhite(this);
+				return false;
+			}
+		}
+	}
 
 	//проверка на ошибки 
 	//сравнить два массива, если елементы одинаковые или равны 2 (не заполнены), то правильно и показать сообщение
