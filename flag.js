@@ -25,7 +25,9 @@ var userAnswers = [[2, 2, 2, 2, 2],
 
 
 var table = document.createElement('table');
+var checkErrorsButton = document.getElementById('check-errors');
 
+//draw table
 for ( var i = 0; i <= 6; i++ ) {
 	var tr = document.createElement('tr');
 	for ( var j = 0; j <= 7; j++ ) {

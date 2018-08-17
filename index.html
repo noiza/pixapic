@@ -83,9 +83,9 @@
 	var table = document.getElementById('table');
 	var checkErrorsButton = document.getElementById('check-errors');
 
-	paintGameField();
+	//paintGameField();
 
-    function addBlack(td) {
+/*    function addBlack(td) {
         if (td.classList.contains('white')) {
             td.classList.remove('white');
         }
@@ -98,18 +98,18 @@
 			td.classList.remove('black');
 		}
 		td.classList.toggle('white');
-	}
+	}*/
 
-	function paintGameField() {
+	/*function paintGameField() {
 		for (var i = 1; i < table.rows.length; i++) {
 			//table.rows[i].classList.add('test');
 			for (var j = 2; j <= table.rows.length; j++) {
 				table.rows[i].cells[j].classList.add('gray');
 			}
 		}
-	}
+	}*/
 
-	//onclick 'Yes' or 1
+/*	//onclick 'Yes' or 1
 	for (var i = 1; i < table.rows.length; i++) {
 		for (var j = 2; j <= table.rows.length; j++) {
 			table.rows[i].cells[j].onclick = function() {
@@ -146,12 +146,12 @@
 				return false;
 			}
 		}
-	}
+	}*/
 
 	//проверка на ошибки 
 	//сравнить два массива, если елементы одинаковые или равны 2 (не заполнены), то правильно и показать сообщение
 	
-	checkErrorsButton.onclick = function () {
+	/*checkErrorsButton.onclick = function () {
 		for (var i = 0; i < answers.length; i++) {
 			for (var j = 0; j <= answers.length; j++) {
 				if ( !(userAnswers[i][j] === answers [i][j] || userAnswers[i][j] === 2) ) {
@@ -160,7 +160,7 @@
 				}
 			}
 		}
-	}
+	}*/
 	
 
 
